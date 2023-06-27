@@ -1,18 +1,27 @@
-import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import React from "react";
+import {
+  StyleSheet,
+  SafeAreaView,
+  Alert,
+  Button,
+  Platform,
+} from "react-native";
 
 export default function App() {
-  console.log('App Executed');
   return (
-    <SafeAreaView style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <SafeAreaView style={[styles.container, containerStyle]}>
+      <Button title="Click Me" onPress={() => console.log("Pressed")} />
     </SafeAreaView>
   );
 }
 
+const containerStyle = { backgroundColor: "orange" };
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'dodgerblue',
+    backgroundColor: "#fff",
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight() : 0,
   },
 });
