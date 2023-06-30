@@ -1,11 +1,12 @@
-import React from "react";
-import { FlatList, StyleSheet, View } from "react-native";
+import React, { useState } from "react";
+import { FlatList } from "react-native";
 
 import ListItem from "../components/ListItem";
 import Screen from "../components/Screen";
 import ListItemSeparator from "../components/ListItem/ListItemSeparator";
+import ListItemDeleteAction from "../components/ListItem/ListItemDeleteAction";
 
-const messages = [
+const initialMessages = [
   {
     id: 1,
     title: "T1",
@@ -21,16 +22,26 @@ const messages = [
 ];
 
 function MessagesScreen(props) {
+  const [messages, setMessages] = useState(initialMessages);
+
+  const handleDelete = (message) => {
+    //Delete the messgage from messages
+    const newMessages = messages.filter((m) => m.id !== message.id);
+    setMessages(newMessages);
+  };
   return (
     <Screen>
       <FlatList
         data={messages}
-        keyExtractor={(messages) => messages.id.toString()}
+        keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <ListItem
             title={item.title}
             subTitle={item.description}
             image={item.image}
+            renderRightAction={() => {
+              <ListItemDeleteAction onPress={() => handleDelete(item)} />;
+            }}
             onPress={() => console.log("You poked me", item.title)}
           />
         )}
