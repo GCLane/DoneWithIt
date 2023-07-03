@@ -1,7 +1,9 @@
 import React from "react";
-import Screen from "../components/Screen";
-import { FlatList } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
+
 import Card from "../components/Card";
+import Screen from "../components/Screen";
+import colors from "../config/colors";
 
 const listings = [
   {
@@ -20,7 +22,7 @@ const listings = [
 
 function ListingsScreen() {
   return (
-    <Screen>
+    <Screen style={styles.screen}>
       <FlatList
         data={listings}
         keyExtractor={(listing) => listing.id.toString()}
@@ -35,5 +37,12 @@ function ListingsScreen() {
     </Screen>
   );
 }
+
+const styles = StyleSheet.create({
+  screen: {
+    padding: 20,
+    backgroundColor: colors.light,
+  },
+});
 
 export default ListingsScreen;
