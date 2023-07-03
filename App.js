@@ -1,16 +1,14 @@
-import React from "react";
-import { StyleSheet, View, FlatList } from "react-native";
+import React, { useState } from "react";
 
-import AccountScreen from "./app/screens/AccountScreen";
-import ListingsScreen from "./app/screens/ListingsScreen";
+import Screen from "./app/components/Screen";
+import AppTextInput from "./app/components/AppTextInput";
 
 export default function App() {
-  return <ListingsScreen />;
+  const [firstName, setFirstName] = useState("");
+
+  return (
+    <Screen>
+      <AppTextInput placeholder="Username" icon="email" />
+    </Screen>
+  );
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
