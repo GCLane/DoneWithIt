@@ -1,21 +1,6 @@
-import React, { useState } from "react";
-
-import Screen from "./app/components/Screen";
-import { AppPicker } from "./app/components/AppPicker";
-import AppTextInput from "./app/components/AppTextInput";
-
-const categories = [
-  { label: "Furniture", value: 1 },
-  { label: "Clothing", value: 2 },
-  { label: "Cameras", value: 3 },
-  { label: "Jewelry", value: 4 },
-];
+import React from "react";
+import LoginScreen from "./app/screens/LoginScreen";
 
 export default function App() {
-  return (
-    <Screen>
-      <AppPicker icon="apps" placeholder="Category" items={categories} />
-      <AppTextInput icon="email" placeholder="Email" />
-    </Screen>
-  );
+  return <LoginScreen />;
 }

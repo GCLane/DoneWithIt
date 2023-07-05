@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   View,
-  Platform,
   StyleSheet,
   TouchableWithoutFeedback,
   Modal,
@@ -16,7 +15,7 @@ import AppText from "../AppText";
 import Screen from "../Screen";
 import PickerItem from "./PickerItem";
 
-function AppPicker({ icon, items, placeholder }) {
+function AppPicker({ icon, items, placeholder, onSelectItem, selectedItem }) {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
@@ -31,7 +30,9 @@ function AppPicker({ icon, items, placeholder }) {
               style={styles.icon}
             />
           )}
-          <AppText style={styles.text}>{placeholder}</AppText>{" "}
+          <AppText style={[styles.text, defaultStyles.text]}>
+            {selectedItem ? selectedItem.label : placeholder}
+          </AppText>{" "}
           {/* Removed space before placeholder */}
           <MaterialCommunityIcons
             name="chevron-down"
@@ -51,7 +52,10 @@ function AppPicker({ icon, items, placeholder }) {
             ) => (
               <PickerItem
                 label={item.label}
-                onPress={() => console.log(item)} // Added parentheses to wrap the arrow function
+                onPress={() => {
+                  setModalVisible(false);
+                  onSelectItem(item);
+                }} // Added parentheses to wrap the arrow function
               />
             )}
           />
