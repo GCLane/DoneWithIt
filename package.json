@@ -23,12 +23,15 @@
     "react-native-gesture-handler": "~2.9.0",
     "react-native-reanimated": "~2.14.4",
     "react-native-web": "~0.18.10",
-    "yup": "^1.2.0"
+    "yup": "^1.2.0",
+    "expo-image-picker": "~14.1.1",
+    "expo-file-system": "~15.2.2",
+    "expo-permissions": "~14.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@babel/preset-react": "^7.22.5",
-    "babel-preset-expo": "~8.1.0"
+    "babel-preset-expo": "^9.3.0"
   },
   "private": true
 }
