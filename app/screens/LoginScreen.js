@@ -33,7 +33,6 @@ function LoginScreen() {
           autoCapitalize="none"
           autoCorrect={false}
           icon="lock"
-          keyboardType="password"
           name="password"
           placeholder="Password"
           secureTextEntry
