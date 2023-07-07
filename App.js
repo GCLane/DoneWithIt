@@ -62,7 +62,15 @@ export default function App() {
         tabBarInactiveTintColor: "black",
       }}
     >
-      <Tab.Screen name="Feed" component={Tweets} />
+      <Tab.Screen
+        name="Feed"
+        component={Tweets}
+        options={{
+          tabBarIcon: ({ size }) => (
+            <MaterialCommunityIcons name="home" size={size} />
+          ),
+        }}
+      />
       <Tab.Screen name="Account" component={Account} />
     </Tab.Navigator>
   );
