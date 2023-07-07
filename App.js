@@ -66,8 +66,8 @@ export default function App() {
         name="Feed"
         component={Tweets}
         options={{
-          tabBarIcon: ({ size }) => (
-            <MaterialCommunityIcons name="home" size={size} />
+          tabBarIcon: ({ size, color }) => (
+            <MaterialCommunityIcons name="home" size={size} color={color} />
           ),
         }}
       />
