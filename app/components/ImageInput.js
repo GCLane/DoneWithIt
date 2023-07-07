@@ -31,8 +31,8 @@ function ImageInput({ imageUri, onChangeImage }) {
   };
 
   const requestPermission = async () => {
-    const { granted } = await ImagePicker.getMediaLibraryPermissionsAsync();
-    if (!granted) alert("You need to enable permission to access app");
+    const { granted } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (!granted) alert("Allow $(PRODUCT_NAME) to access your photos");
   };
 
   const selectImage = async () => {
