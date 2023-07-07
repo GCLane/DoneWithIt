@@ -14,6 +14,7 @@ const menuItems = [
       name: "format-list-bulleted",
       backgroundColor: colors.primary,
     },
+    targetScreen: "Listings",
   },
   {
     title: "My Messages",
@@ -21,10 +22,11 @@ const menuItems = [
       name: "email",
       backgroundColor: colors.secondary,
     },
+    targetScreen: "Messages",
   },
 ];
 
-function AccountScreen() {
+function AccountScreen({ navigation }) {
   const name = "Grant Lane";
   const email = "grantlane.glane@gmail.com";
   const image = require("../assets/mosh.jpg");
@@ -41,6 +43,7 @@ function AccountScreen() {
           ItemSeparatorComponent={ListItemSeparator}
           renderItem={({ item }) => (
             <ListItem
+              onPress={() => navigation.navigate(item.targetScreen)}
               title={item.title}
               IconComponent={
                 <Icon
