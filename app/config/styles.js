@@ -5,6 +5,6 @@ export default {
   text: {
     fontSize: 18,
     fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
-    fontWeight: 250,
+    fontWeight: "200",
   },
 };
