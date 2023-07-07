@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import Screen from "./app/components/Screen";
+import AuthNavigator from "./app/navigation/AuthNavigator";
 
 const Tweets = ({ navigation }) => (
   <Screen>
@@ -17,7 +18,7 @@ const Tweets = ({ navigation }) => (
   </Screen>
 );
 
-const TweetDetails = ({ route }) => (
+const TweetDetails = ({ navigation, route }) => (
   <Screen>
     <Text>TweetDetails {route.params.id} </Text>
   </Screen>
@@ -40,7 +41,6 @@ export default function App() {
         options={{
           headerStyle: { backgroundColor: "tomato" },
           headerTintColor: "white",
-          headerShown: false,
         }}
       />
     </Stack.Navigator>
@@ -64,20 +64,20 @@ export default function App() {
     >
       <Tab.Screen
         name="Feed"
-        component={Tweets}
+        component={FeedStackNavigation}
         options={{
           tabBarIcon: ({ size, color }) => (
             <MaterialCommunityIcons name="home" size={size} color={color} />
           ),
         }}
       />
-      <Tab.Screen name="Account" component={Account} />
+      <Tab.Screen name="Account" component={AccountTabNavigation} />
     </Tab.Navigator>
   );
 
   return (
     <NavigationContainer>
-      <TabNavigator />
+      <AuthNavigator />
     </NavigationContainer>
   );
 }
