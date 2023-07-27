@@ -1,13 +1,15 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import AppNavigator from "./app/navigation/AppNavigator";
-import navigationTheme from "./app/navigation/navigationTheme";
-import UploadScreen from "./app/screens/UploadScreen";
+import NetInfo, { useNetInfo } from "@react-native-community/netinfo";
+import AppButton from "./app/components/AppButton";
 
 export default function App() {
+  const netInfo = useNetInfo();
+
   return (
-    <NavigationContainer theme={navigationTheme}>
-      <AppNavigator />
-    </NavigationContainer>
+    <AppButton
+      disabled={netInfo.isInternetReachable}
+      title="Press"
+      onPress={() => console.log("Laugh")}
+    />
   );
 }
