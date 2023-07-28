@@ -29,8 +29,7 @@ const menuItems = [
 ];
 
 function AccountScreen({ navigation }) {
-  const { user } = useContext(AuthContext);
-  const name = "Grant Lane";
+  const { user, setUser } = useContext(AuthContext);
   const email = "grantlane.glane@gmail.com";
   const image = require("../assets/mosh.jpg");
 
@@ -65,6 +64,7 @@ function AccountScreen({ navigation }) {
       <ListItem
         title="Log Out"
         IconComponent={<Icon name="logout" backgroundColor={colors.warning} />}
+        onPress={() => setUser(null)}
       />
     </Screen>
   );
