@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import jwtDecode from "jwt-decode";
 import { NavigationContainer } from "@react-navigation/native";
 import * as SplashScreen from "expo-splash-screen";
-import AppLoading from "expo-app-loading";
 
 import AppNavigator from "./app/navigation/AppNavigator";
 import AuthContext from "./app/auth/context";
@@ -15,18 +13,15 @@ export default function App() {
   const [user, setUser] = useState();
   const [isReady, setIsReady] = useState(false);
 
-  const restoreToken = async () => {
-    const token = await authStorage.getToken();
-    if (!token) return;
-    setUser(jwtDecode(token));
+  const restoreUser = async () => {
+    const user = await authStorage.getUser();
+    if (user) setUser(user);
   };
 
   if (!isReady) {
-    <AppLoading
-      startAsync={restoreToken()}
-      onFinish={() => setIsReady(true)}
-      onError={() => setIsReady(false)}
-    />;
+    SplashScreen.hideAsync();
+    const restored = restoreUser();
+    if (restored) setIsReady(true);
   }
 
   return (
